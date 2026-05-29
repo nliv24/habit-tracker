@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <h1>Habits</h1>
+      <button id="open-modal-btn" class="btn btn-primary">+ Add habit</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div id="habits-container"></div>
+    <div id="empty-state" class="empty-state hidden">
+      <p class="empty-title">No habits yet</p>
+      <p class="empty-sub">Add your first habit to start tracking.</p>
+    </div>
+  </main>
+
+  <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <h2 id="modal-heading">New habit</h2>
+    <form id="add-form" novalidate>
+      <div class="field">
+        <label for="input-name">Name</label>
+        <input id="input-name" type="text" placeholder="e.g. Morning run" maxlength="60" required autocomplete="off">
+        <span class="field-error" id="name-error" role="alert"></span>
+      </div>
+      <div class="field">
+        <label for="input-desc">Description <span class="optional">(optional)</span></label>
+        <input id="input-desc" type="text" placeholder="e.g. 30 mins outdoors" maxlength="120" autocomplete="off">
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="cancel-btn" class="btn btn-secondary">Cancel</button>
+        <button type="submit" class="btn btn-primary">Add habit</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
