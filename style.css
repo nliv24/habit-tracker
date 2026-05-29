@@ -68,6 +68,18 @@ h1 {
   letter-spacing: -0.01em;
 }
 
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.today-count {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
 .header-actions {
   display: flex;
   align-items: center;

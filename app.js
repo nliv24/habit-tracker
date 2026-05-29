@@ -180,6 +180,10 @@ function render() {
 
   container.innerHTML = '';
 
+  const total = state.habits.length;
+  const done = state.habits.filter(h => h.completions.includes(today)).length;
+  document.getElementById('today-count').textContent = total > 0 ? `${done} of ${total} done today` : '';
+
   if (state.habits.length === 0) {
     emptyState.classList.remove('hidden');
     return;
