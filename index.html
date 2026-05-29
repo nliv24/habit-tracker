@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Habit Tracker</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply saved theme before CSS renders to prevent flash
+    (function () {
+      var t = localStorage.getItem('habit-tracker-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
 </head>
 <body>
   <header class="app-header">
     <div class="header-inner">
       <h1>Habits</h1>
-      <button id="open-modal-btn" class="btn btn-primary">+ Add habit</button>
+      <div class="header-actions">
+        <button id="theme-btn" class="btn btn-secondary" aria-label="Switch to dark mode">Dark</button>
+        <button id="open-modal-btn" class="btn btn-primary">+ Add habit</button>
+      </div>
     </div>
   </header>
 

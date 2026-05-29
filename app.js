@@ -1,6 +1,22 @@
 'use strict';
 
 const STORAGE_KEY = 'habit-tracker';
+const THEME_KEY = 'habit-tracker-theme';
+
+// ── Theme ─────────────────────────────────────────────────────────────────────
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const btn = document.getElementById('theme-btn');
+  btn.textContent = theme === 'dark' ? 'Light' : 'Dark';
+  btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+}
+
+function toggleTheme() {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme(next);
+}
 
 // ── Date helpers ──────────────────────────────────────────────────────────────
 
@@ -223,5 +239,9 @@ nameInput.addEventListener('input', () => {
 });
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
+
+// Sync button label with the theme that was already applied by the inline <head> script
+applyTheme(localStorage.getItem(THEME_KEY) || 'light');
+document.getElementById('theme-btn').addEventListener('click', toggleTheme);
 
 render();
